@@ -24,7 +24,7 @@ A full R package named `ar1simR` implementing the above function, complete with:
 - Unit tests using `testthat`
 - Passes `R CMD check --as-cran`
 
-# Folder: `hard/ar1simR/`
+# Folder: `contributor-tests-hard/contributor-tests/hard/ar1simR`
 
 ## Setup Instructions
 

@@ -8,7 +8,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## 🔍 Objective
+##Objective
 
 Compare standard `acf()` and `pacf()` from base R with `taperedacf()` from the `forecast` package on simulated AR/MA models.
 
@@ -18,7 +18,7 @@ library(ggplot2)
 library(gridExtra)
 ```
 
-## 🔁 Simulate an AR(2) Process
+##Simulate an AR(2) Process
 
 ```{r ar2-sim}
 set.seed(123)
@@ -26,7 +26,7 @@ ar2_series <- arima.sim(n = 200, model = list(ar = c(0.5, -0.3)))
 ts.plot(ar2_series, main = "Simulated AR(2) Process")
 ```
 
-## 🔧 ACF Comparison
+##ACF Comparison
 
 ```{r acf-comparison}
 acf_base <- acf(ar2_series, plot = FALSE)
@@ -50,7 +50,7 @@ ggplot(acf_df, aes(x = Lag)) +
   theme_minimal()
 ```
 
-## 🔧 PACF Comparison
+##PACF Comparison
 
 ```{r pacf-comparison}
 pacf_base <- pacf(ar2_series, plot = FALSE)
@@ -66,13 +66,13 @@ ggplot(pacf_df, aes(x = Lag, y = PACF_base)) +
   theme_minimal()
 ```
 
-## 💬 Interpretation
+##Interpretation
 
 - **Tapered ACF** smooths the tail of autocorrelations to reduce variance, especially useful for longer lags.
 - **Banded ACF** zeroes out ACF beyond a certain lag (bandwidth), helping in sparse modeling.
 - **Standard base R ACF/PACF** is unbiased but noisier at higher lags.
 
-## 🧩 Bonus: Try on MA(1)
+##Try on MA(1)
 
 ```{r ma1-sim}
 ma1_series <- arima.sim(n = 200, model = list(ma = 0.8))
@@ -82,6 +82,6 @@ acf(ma1_series, main = "ACF of MA(1)")
 taperedacf(ma1_series, main = "Tapered ACF of MA(1)")
 ```
 
-## ✅ Done!
+##
 
-This wraps up the easy-level comparison task. You can now package this file into a repo or zip folder for submission.
+##This wraps up the easy-level comparison task. You can now package this file into a repo or zip folder for submission.

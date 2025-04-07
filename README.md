@@ -10,13 +10,13 @@ Comparison of base R `acf()` and `pacf()` with `taperedacf()` from the `forecast
 - Code: `easy/easy_test.R`
 - Output plots: `easy/plots/`
 
-### Medium Level
+### Medium Level('medium')
 `simulate_ar1_range()` — a function to generate simulated AR(1) processes with specified correlation ranges.
 
 - Function: `medium/simulate_ar1_range.R`
 - Usage Example: `medium/simulation_example.Rmd`
 
-### Hard Level(`contributor-tests-hard/contributor-tests/hard/ar1simR`)
+### Hard Level(`contributor-tests-hard/contributor-tests/hard`)
 A full R package named `ar1simR` implementing the above function, complete with:
 
 - `DESCRIPTION`, `NAMESPACE`

@@ -1,0 +1,87 @@
+
+---
+title: "Easy Test: ACF/PACF Comparison"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 🔍 Objective
+
+Compare standard `acf()` and `pacf()` from base R with `taperedacf()` from the `forecast` package on simulated AR/MA models.
+
+```{r packages}
+library(forecast)  # for taperedacf()
+library(ggplot2)
+library(gridExtra)
+```
+
+## 🔁 Simulate an AR(2) Process
+
+```{r ar2-sim}
+set.seed(123)
+ar2_series <- arima.sim(n = 200, model = list(ar = c(0.5, -0.3)))
+ts.plot(ar2_series, main = "Simulated AR(2) Process")
+```
+
+## 🔧 ACF Comparison
+
+```{r acf-comparison}
+acf_base <- acf(ar2_series, plot = FALSE)
+acf_tapered <- taperedacf(ar2_series, type = "correlation", plot = FALSE)
+acf_banded <- taperedacf(ar2_series, type = "correlation", banded = TRUE, plot = FALSE)
+
+# Combine results into data frame for ggplot
+acf_df <- data.frame(
+  Lag = acf_base$lag,
+  ACF_base = acf_base$acf,
+  ACF_tapered = acf_tapered$acf,
+  ACF_banded = acf_banded$acf
+)
+
+# Plot
+ggplot(acf_df, aes(x = Lag)) +
+  geom_line(aes(y = ACF_base, color = "Base R")) +
+  geom_line(aes(y = ACF_tapered, color = "Tapered")) +
+  geom_line(aes(y = ACF_banded, color = "Banded")) +
+  labs(title = "ACF Comparison", y = "ACF", color = "Method") +
+  theme_minimal()
+```
+
+## 🔧 PACF Comparison
+
+```{r pacf-comparison}
+pacf_base <- pacf(ar2_series, plot = FALSE)
+pacf_df <- data.frame(
+  Lag = pacf_base$lag,
+  PACF_base = pacf_base$acf
+)
+
+ggplot(pacf_df, aes(x = Lag, y = PACF_base)) +
+  geom_segment(aes(xend = Lag, yend = 0), size = 1) +
+  geom_hline(yintercept = 0, color = "gray") +
+  labs(title = "PACF (Base R)", y = "PACF") +
+  theme_minimal()
+```
+
+## 💬 Interpretation
+
+- **Tapered ACF** smooths the tail of autocorrelations to reduce variance, especially useful for longer lags.
+- **Banded ACF** zeroes out ACF beyond a certain lag (bandwidth), helping in sparse modeling.
+- **Standard base R ACF/PACF** is unbiased but noisier at higher lags.
+
+## 🧩 Bonus: Try on MA(1)
+
+```{r ma1-sim}
+ma1_series <- arima.sim(n = 200, model = list(ma = 0.8))
+ts.plot(ma1_series, main = "Simulated MA(1) Process")
+
+acf(ma1_series, main = "ACF of MA(1)")
+taperedacf(ma1_series, main = "Tapered ACF of MA(1)")
+```
+
+## ✅ Done!
+
+This wraps up the easy-level comparison task. You can now package this file into a repo or zip folder for submission.

@@ -82,6 +82,3 @@ acf(ma1_series, main = "ACF of MA(1)")
 taperedacf(ma1_series, main = "Tapered ACF of MA(1)")
 ```
 
-##
-
-##This wraps up the easy-level comparison task. You can now package this file into a repo or zip folder for submission.

@@ -1,0 +1,9 @@
+Package: ar1simR
+Title: Simulate AR(1) Processes Within a Specified Correlation Range
+Version: 0.1.0
+Authors@R: person("Contributor", "Name", email = "contributor@example.com", role = c("aut", "cre"))
+Description: Generates simulated AR(1) processes with autocorrelations in a user-specified range.
+License: MIT
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.2.3

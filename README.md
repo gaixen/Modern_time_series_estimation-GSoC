@@ -4,7 +4,7 @@ This repository contains my solutions to the contributor tests (Easy, Medium, an
 
 ##Contents
 
-### Easy Level
+### Easy Level('easy_acf_comparison.Rmd')
 Comparison of base R `acf()` and `pacf()` with `taperedacf()` from the `forecast` package across various AR and MA processes.
 
 - Code: `easy/easy_test.R`

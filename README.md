@@ -44,7 +44,7 @@ devtools::check("hard/ar1simR", args = "--as-cran")
 
 ## 👤 Author
 
-**Soham Chowdhury**  
-GitHub: [@your-github-username](https://github.com/your-github-username)
+**Soham Mukherjee**  
+GitHub: [@gaixen](https://github.com/gaixen/Modern_time_series_estimation-GSoC)
 
 ---

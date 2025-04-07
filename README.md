@@ -2,7 +2,7 @@
 
 This repository contains my solutions to the contributor tests (Easy, Medium, and Hard) for the Time Series Dual Shrinkage Simulation Study project inspired by Gallagher et al. (2024, 2025).
 
-##Contents
+## Contents
 
 ### Easy Level('easy_acf_comparison.Rmd')
 Comparison of base R `acf()` and `pacf()` with `taperedacf()` from the `forecast` package across various AR and MA processes.
@@ -16,15 +16,13 @@ Comparison of base R `acf()` and `pacf()` with `taperedacf()` from the `forecast
 - Function: `medium/simulate_ar1_range.R`
 - Usage Example: `medium/simulation_example.Rmd`
 
-### Hard Level
+### Hard Level(`contributor-tests-hard/contributor-tests/hard/ar1simR`)
 A full R package named `ar1simR` implementing the above function, complete with:
 
 - `DESCRIPTION`, `NAMESPACE`
 - Proper documentation
 - Unit tests using `testthat`
 - Passes `R CMD check --as-cran`
-
-# Folder: `contributor-tests-hard/contributor-tests/hard/ar1simR`
 
 ## Setup Instructions
 
